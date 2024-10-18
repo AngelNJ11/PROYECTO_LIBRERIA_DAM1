@@ -30,9 +30,9 @@
             android:textSize="34sp"
             android:textStyle="bold" />
 
-        <androidx.constraintlayout.helper.widget.Flow
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="21dp" />
+            android:layout_height="24dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,15 +48,15 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="48dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_width="45dp"
+                android:layout_height="match_parent" />
 
             <EditText
                 android:id="@+id/etNombre"
-                android:layout_width="wrap_content"
+                android:layout_width="233dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Nombre"
                 android:inputType="text"
                 android:textAlignment="viewStart" />
         </LinearLayout>
@@ -75,7 +75,7 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="63dp"
+                android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
@@ -83,8 +83,8 @@
                 android:id="@+id/etApellido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:ems="10"
+                android:hint="Apellido"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -103,7 +103,7 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="34dp"
+                android:layout_width="11dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
@@ -113,7 +113,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="date" />
+                android:clickable="false"
+                android:focusable="false"
+                android:cursorVisible="false"
+                android:hint="Seleccione la Fecha"
+                android:drawableRight="@drawable/calendarioo"
+                android:inputType="text"
+                android:selectAllOnFocus="true"
+                android:singleLine="true" />
 
         </LinearLayout>
 
@@ -131,17 +138,17 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="99dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_width="78dp"
+                android:layout_height="match_parent" />
 
             <EditText
                 android:id="@+id/etPais"
-                android:layout_width="wrap_content"
+                android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:autofillHints=""
                 android:ems="10"
+                android:hint="Pais"
                 android:inputType="text" />
 
         </LinearLayout>
@@ -160,17 +167,16 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="78dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_width="56dp"
+                android:layout_height="match_parent" />
 
             <EditText
                 android:id="@+id/etCorreo"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:hint="E-mail"
+                android:inputType="text|textEmailSubject" />
 
         </LinearLayout>
 
@@ -188,7 +194,7 @@
                 android:textStyle="bold" />
 
             <Space
-                android:layout_width="34dp"
+                android:layout_width="14dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
@@ -198,6 +204,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:hint="*******"
                 android:inputType="textPassword" />
 
         </LinearLayout>
