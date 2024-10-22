@@ -1,18 +1,15 @@
 package com.grupo01.libreria
 
-import java.time.LocalDate
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "user_table")
 data class Usuario (
-    var id: Int? = null,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     var nombres: String? = null,
     var apellidos: String? = null,
-    var nacimiento: LocalDate? = null,
+    var nacimiento: String? = null,
     var pais: String? = null,
     var correo: String? = null,
     var contra: String? = null
 )
-{
-    constructor(correo: String, contra: String) : this(
-        null, null, null, null, null, correo, contra
-    )
-}
