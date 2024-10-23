@@ -5,11 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.grupo01.libreria.model.Converters
 import com.grupo01.libreria.model.Usuario
 
 @Database(entities = [Usuario::class], version = 1, exportSchema = false)
-@TypeConverters(Converters::class)
 abstract class UsuarioDB:RoomDatabase() {
 
     abstract fun usuarioDao() : UsuarioDAO

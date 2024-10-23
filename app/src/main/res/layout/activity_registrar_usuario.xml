@@ -41,20 +41,17 @@
 
             <TextView
                 android:id="@+id/textView1"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Nombre : "
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <Space
-                android:layout_width="45dp"
-                android:layout_height="match_parent" />
-
             <EditText
                 android:id="@+id/etNombre"
                 android:layout_width="233dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:ems="10"
                 android:hint="Nombre"
                 android:inputType="text"
@@ -68,21 +65,17 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Apellido : "
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <Space
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
             <EditText
                 android:id="@+id/etApellido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:ems="10"
                 android:hint="Apellido"
                 android:inputType="text" />
@@ -101,11 +94,6 @@
                 android:text="Nacimiento : "
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
-            <Space
-                android:layout_width="11dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
 
             <EditText
                 android:id="@+id/etNacimiento"
@@ -131,15 +119,11 @@
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Pais : "
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
-            <Space
-                android:layout_width="78dp"
-                android:layout_height="match_parent" />
 
             <EditText
                 android:id="@+id/etPais"
@@ -160,20 +144,17 @@
 
             <TextView
                 android:id="@+id/textView5"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Correo : "
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <Space
-                android:layout_width="56dp"
-                android:layout_height="match_parent" />
-
             <EditText
                 android:id="@+id/etCorreo"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:ems="10"
                 android:hint="E-mail"
                 android:inputType="text|textEmailSubject" />
@@ -187,16 +168,11 @@
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="Contraseña : "
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
-            <Space
-                android:layout_width="14dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
 
             <EditText
                 android:id="@+id/etContra"
@@ -223,6 +199,7 @@
                 android:layout_width="149dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="#65CE49"
                 android:text="Registrar"
                 android:textColorLink="#70BD6F"
                 android:textSize="16sp" />
@@ -236,6 +213,7 @@
                 android:id="@+id/btnRegresar"
                 android:layout_width="143dp"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#313FC5"
                 android:text="Regresar"
                 android:textColorLink="#FF0000"
                 android:textSize="16sp" />

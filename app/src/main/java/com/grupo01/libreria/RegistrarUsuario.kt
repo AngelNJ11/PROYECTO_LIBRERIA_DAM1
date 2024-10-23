@@ -16,13 +16,13 @@ import com.grupo01.libreria.model.Usuario
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class RegistrarUsuario : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrarUsuarioBinding
     private val Calendario: Calendar = Calendar.getInstance()
     private lateinit var database: UsuarioDB
     private lateinit var usuarioDao :UsuarioDAO
-    private var userData: Usuario? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +37,7 @@ class RegistrarUsuario : AppCompatActivity() {
 
         database = UsuarioDB.getDataBase(this)
         usuarioDao = database.usuarioDao()
+
 
         binding.etNacimiento.setOnClickListener {
             val datePickerDialog = DatePickerDialog(this, { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
@@ -57,8 +58,24 @@ class RegistrarUsuario : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val userTest = Usuario(nombres = "juan", correo = "a@gmail.com" )
-        crearUsuario(userTest)
+        binding.btnRegistrar.setOnClickListener{
+            val nombre = binding.etNombre.text.toString()
+            val apellido = binding.etApellido.text.toString()
+            val nacimiento = binding.etNacimiento.text.toString()
+            val pais = binding.etPais.text.toString()
+            val correo = binding.etCorreo.text.toString()
+            val password = binding.etContra.text.toString()
+
+            val user = Usuario(nombres = nombre, apellidos = apellido, nacimiento = nacimiento, pais = pais, correo = correo, contra = password)
+            crearUsuario(user)
+
+            binding.etNombre.text.clear()
+            binding.etApellido.text.clear()
+            binding.etNacimiento.text.clear()
+            binding.etPais.text.clear()
+            binding.etCorreo.text.clear()
+            binding.etContra.text.clear()
+        }
     }
 
 
@@ -67,4 +84,7 @@ class RegistrarUsuario : AppCompatActivity() {
             usuarioDao.insert(usuario)
         }
     }
+
+
+
 }

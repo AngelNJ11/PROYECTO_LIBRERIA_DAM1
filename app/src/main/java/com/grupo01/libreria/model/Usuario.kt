@@ -9,7 +9,7 @@ data class Usuario (
     @PrimaryKey(autoGenerate = true)var id : Int? = null,
     var nombres : String? = null,
     var apellidos : String? = null,
-    var nacimiento : LocalDate? = null,
+    var nacimiento : String? = null,
     var pais : String? = null,
     var correo : String? = null,
     var contra : String? = null
