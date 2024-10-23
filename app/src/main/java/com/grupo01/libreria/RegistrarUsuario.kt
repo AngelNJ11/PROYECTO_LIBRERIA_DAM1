@@ -12,10 +12,17 @@ import com.grupo01.libreria.databinding.ActivityRegistrarUsuarioBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 import android.app.DatePickerDialog
+import com.grupo01.libreria.model.Usuario
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class RegistrarUsuario : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrarUsuarioBinding
     private val Calendario: Calendar = Calendar.getInstance()
+    private lateinit var database: UsuarioDB
+    private lateinit var usuarioDao :UsuarioDAO
+    private var userData: Usuario? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +34,9 @@ class RegistrarUsuario : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        database = UsuarioDB.getDataBase(this)
+        usuarioDao = database.usuarioDao()
 
         binding.etNacimiento.setOnClickListener {
             val datePickerDialog = DatePickerDialog(this, { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
@@ -45,6 +55,16 @@ class RegistrarUsuario : AppCompatActivity() {
         binding.btnRegresar.setOnClickListener {
             val intent = Intent(this, EditarUsuario::class.java)
             startActivity(intent)
+        }
+
+        val userTest = Usuario(nombres = "juan", correo = "a@gmail.com" )
+        crearUsuario(userTest)
+    }
+
+
+    fun crearUsuario(usuario :Usuario){
+        CoroutineScope(Dispatchers.IO).launch {
+            usuarioDao.insert(usuario)
         }
     }
 }
