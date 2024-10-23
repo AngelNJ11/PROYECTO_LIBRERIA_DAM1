@@ -1,6 +1,6 @@
 package com.grupo01.libreria
 
-import android.content.Intent
+import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.widget.DatePicker
@@ -8,19 +8,19 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.grupo01.libreria.databinding.ActivityRegistrarUsuarioBinding
+import com.grupo01.libreria.databinding.ActivityEditarUsuarioBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
-import android.app.DatePickerDialog
 
-class RegistrarUsuario : AppCompatActivity() {
-    private lateinit var binding: ActivityRegistrarUsuarioBinding
-    private val Calendario: Calendar = Calendar.getInstance()
+class EditarUsuario : AppCompatActivity() {
+
+    private lateinit var binding: ActivityEditarUsuarioBinding
+    private val calendario: Calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityRegistrarUsuarioBinding.inflate(layoutInflater)
+        binding = ActivityEditarUsuarioBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -30,21 +30,16 @@ class RegistrarUsuario : AppCompatActivity() {
 
         binding.etNacimiento.setOnClickListener {
             val datePickerDialog = DatePickerDialog(this, { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
-                Calendario.set(Calendar.YEAR, year)
-                Calendario.set(Calendar.MONTH, month)
-                Calendario.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                calendario.set(Calendar.YEAR, year)
+                calendario.set(Calendar.MONTH, month)
+                calendario.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
                 val myFormat = "dd-MM-yyyy"
                 val dateFormat = SimpleDateFormat(myFormat, Locale.US)
-                binding.etNacimiento.setText(dateFormat.format(Calendario.time))
-            }, Calendario.get(Calendar.YEAR), Calendario.get(Calendar.MONTH), Calendario.get(Calendar.DAY_OF_MONTH))
+                binding.etNacimiento.setText(dateFormat.format(calendario.time))
+            }, calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DAY_OF_MONTH))
 
             datePickerDialog.show()
-        }
-
-        binding.btnRegresar.setOnClickListener {
-            val intent = Intent(this, EditarUsuario::class.java)
-            startActivity(intent)
         }
     }
 }
