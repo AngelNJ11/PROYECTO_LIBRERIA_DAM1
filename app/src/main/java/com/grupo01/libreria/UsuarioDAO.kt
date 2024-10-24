@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface UsuarioDAO {
@@ -14,5 +15,6 @@ interface UsuarioDAO {
     @Query("SELECT * FROM usuario_table")
     suspend fun getAllUser():List<Usuario>
 
-
+    @Update
+    suspend fun update(usuario: Usuario)
 }

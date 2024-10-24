@@ -15,6 +15,8 @@ import java.util.Locale
 class EditarUsuario : AppCompatActivity() {
     private lateinit var binding: ActivityEditarUsuarioBinding
     private val calendario: Calendar = Calendar.getInstance()
+    private lateinit var usuarioDao: UsuarioDAO
+    private lateinit var database: UsuarioDB
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,5 +42,15 @@ class EditarUsuario : AppCompatActivity() {
 
             datePickerDialog.show()
         }
+
+        database = UsuarioDB.getDataBase(this)
+        usuarioDao = database.usuarioDao()
+
+
+        binding.btnEditar.setOnClickListener {
+
+        }
+
+
     }
 }
