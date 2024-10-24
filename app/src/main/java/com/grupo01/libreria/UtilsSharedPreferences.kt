@@ -18,5 +18,13 @@ class UtilsSharedPreferences {
             val sharedPref = context.getSharedPreferences("com.midominio.miaplicacion", MODE_PRIVATE)
             return sharedPref.getBoolean("login",false)
         }
+
+        //Cerrar Session
+        fun clearSesion(context: Context) {
+            val sharedPref = context.getSharedPreferences("com.midominio.miaplicacion", MODE_PRIVATE)
+            val editor = sharedPref.edit()
+            editor.clear()
+            editor.apply()
+        }
     }
 }
