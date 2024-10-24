@@ -16,6 +16,7 @@ import com.grupo01.libreria.model.Usuario
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class RegistrarUsuario : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrarUsuarioBinding
@@ -52,13 +53,22 @@ class RegistrarUsuario : AppCompatActivity() {
             datePickerDialog.show()
         }
 
+        binding.btnRegistrar.setOnClickListener {
+            val nombre = binding.etNombre.text.toString()
+            val apellido = binding.etApellido.text.toString()
+            val nacimiento = binding.etNacimiento.text.toString()
+            val pais = binding.etPais.text.toString()
+            val correo = binding.etCorreo.text.toString()
+            val password = binding.etContra.text.toString()
+
+            val user = Usuario(nombres = nombre, apellidos = apellido, nacimiento = nacimiento, pais = pais, correo = correo, contra = password)
+            crearUsuario(user)
+        }
+
         binding.btnRegresar.setOnClickListener {
             val intent = Intent(this, EditarUsuario::class.java)
             startActivity(intent)
         }
-
-        val userTest = Usuario(nombres = "juan", correo = "a@gmail.com" )
-        crearUsuario(userTest)
     }
 
 

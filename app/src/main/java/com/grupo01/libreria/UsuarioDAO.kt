@@ -11,6 +11,4 @@ interface UsuarioDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun  insert(usuario: Usuario)
 
-
-
 }
