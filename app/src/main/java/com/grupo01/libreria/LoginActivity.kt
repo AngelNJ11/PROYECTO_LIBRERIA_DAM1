@@ -1,26 +1,31 @@
 package com.grupo01.libreria
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
+import android.content.Intent
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.grupo01.libreria.databinding.ActivityLoginBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var usuarioDao: UsuarioDAO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val db = UsuarioDB.getDataBase(this)
+        usuarioDao = db.usuarioDao()
+
         if (UtilsSharedPreferences.getSesion(this)) {
             startActivity(
                 Intent(
@@ -29,42 +34,40 @@ class LoginActivity : AppCompatActivity() {
                 ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             )
         } else {
-            binding = ActivityLoginBinding.inflate(layoutInflater)
-            setContentView(binding.root)
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
-            }
-
             binding.btnLogeo.setOnClickListener {
-                Log.e("Input data", binding.txtCorreo.text.toString())
-                Log.e("Input data", binding.txtContra.text.toString())
-                if (binding.txtCorreo.text.toString()
-                        .trim() == "jhon@gmail.com" && binding.txtContra.text.toString()
-                        .trim() == "12345"
-                ) {
-                    UtilsSharedPreferences.createSesion(this)
-                    startActivity(
-                        Intent(
-                            this,
-                            ListLibros::class.java
-                        ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    )
-                    mostrarToast("Ingresaste correctamente", true)
-                } else {
-                    mostrarToast("Usuario o Contraseña Incorrectos", false)
+                val correoIngresado = binding.txtCorreo.text.toString().trim()
+                val contraIngresada = binding.txtContra.text.toString().trim()
+
+                lifecycleScope.launch {
+                    val usuario = withContext(Dispatchers.IO) {
+                        usuarioDao.getUsuarioByCorreo(correoIngresado)
+                    }
+
+                    if (usuario != null && usuario.contra == contraIngresada) {
+                        UtilsSharedPreferences.createSesion(this@LoginActivity)
+                        startActivity(
+                            Intent(
+                                this@LoginActivity,
+                                ListLibros::class.java
+                            ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        )
+                        mostrarToast("Ingresaste correctamente", true)
+                    } else {
+                        mostrarToast("Usuario o Contraseña Incorrectos", false)
+                    }
                 }
             }
+            
             binding.btnRegistro.setOnClickListener {
                 val intent = Intent(this, RegistrarUsuario::class.java)
                 startActivity(intent)
             }
         }
     }
+
     private fun mostrarToast(mensaje: String, esExito: Boolean) {
-        val inflater: LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val layout: View = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container))
+        val inflater = layoutInflater
+        val layout = inflater.inflate(R.layout.custom_toast, findViewById(R.id.custom_toast_container))
 
         val text: TextView = layout.findViewById(R.id.textoToast)
         text.text = mensaje
