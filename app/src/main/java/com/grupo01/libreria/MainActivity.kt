@@ -9,23 +9,31 @@ import androidx.core.view.WindowInsetsCompat
 import com.grupo01.libreria.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private  lateinit var  binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        if (UtilsSharedPreferences.getSesion(this)) {
+            startActivity(
+                Intent(
+                    this,
+                    ListLibros::class.java
+                ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            )
+        } else {
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                insets
+            }
 
-        binding.btnR.setOnClickListener {
-            val intent = Intent(this, RegistrarUsuario::class.java)
-
-            startActivity(intent)
+            binding.btnL.setOnClickListener {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }

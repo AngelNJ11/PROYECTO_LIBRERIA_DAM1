@@ -1,7 +1,6 @@
 package com.grupo01.libreria
 
 import android.app.DatePickerDialog
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.activity.enableEdgeToEdge
@@ -10,10 +9,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.grupo01.libreria.databinding.ActivityEditarUsuarioBinding
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Locale
 
 class EditarUsuario : AppCompatActivity() {
-
     private lateinit var binding: ActivityEditarUsuarioBinding
     private val calendario: Calendar = Calendar.getInstance()
 
