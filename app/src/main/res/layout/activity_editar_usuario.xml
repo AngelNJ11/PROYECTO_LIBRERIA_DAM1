@@ -9,10 +9,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="24dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="Editar Usuario"
             android:textAlignment="center"
-            android:textSize="34sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <Space
@@ -88,61 +88,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Nacimiento : "
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etNacimiento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:drawableRight="@drawable/calendarioo"
-                android:ems="10"
-                android:focusable="false"
-                android:hint="Seleccione la Fecha"
-                android:inputType="text"
-                android:selectAllOnFocus="true"
-                android:singleLine="true" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Pais : "
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/etPais"
-                android:layout_width="168dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:autofillHints=""
-                android:ems="10"
-                android:hint="Pais"
-                android:inputType="text" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
                 android:id="@+id/textView5"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
@@ -190,13 +135,13 @@
             android:layout_height="38dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnEditar"
-                android:layout_width="149dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Guardar"
@@ -210,7 +155,7 @@
 
             <Button
                 android:id="@+id/btnEliminar"
-                android:layout_width="149dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#D53939"

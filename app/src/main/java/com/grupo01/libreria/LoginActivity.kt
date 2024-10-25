@@ -44,11 +44,11 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                     if (usuario != null && usuario.contra == contraIngresada) {
-                        UtilsSharedPreferences.createSesion(this@LoginActivity)
+                        UtilsSharedPreferences.createSesion(this@LoginActivity, usuario.correo.toString())
                         startActivity(
                             Intent(
                                 this@LoginActivity,
-                                ListLibros::class.java
+                                EditarUsuario::class.java
                             ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         )
                         mostrarToast("Ingresaste correctamente", true)

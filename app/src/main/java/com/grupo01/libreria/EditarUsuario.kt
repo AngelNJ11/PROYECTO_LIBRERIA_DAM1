@@ -7,7 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.grupo01.libreria.databinding.ActivityEditarUsuarioBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -29,23 +33,32 @@ class EditarUsuario : AppCompatActivity() {
             insets
         }
 
-        binding.etNacimiento.setOnClickListener {
-            val datePickerDialog = DatePickerDialog(this, { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
-                calendario.set(Calendar.YEAR, year)
-                calendario.set(Calendar.MONTH, month)
-                calendario.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-
-                val myFormat = "dd-MM-yyyy"
-                val dateFormat = SimpleDateFormat(myFormat, Locale.US)
-                binding.etNacimiento.setText(dateFormat.format(calendario.time))
-            }, calendario.get(Calendar.YEAR), calendario.get(Calendar.MONTH), calendario.get(Calendar.DAY_OF_MONTH))
-
-            datePickerDialog.show()
-        }
-
         database = UsuarioDB.getDataBase(this)
         usuarioDao = database.usuarioDao()
 
+        val sharedPref = getSharedPreferences("com.midominio.miaplicacion", MODE_PRIVATE)
+        val correo = sharedPref.getString("correoUsuario", "No registrado")
+
+        lifecycleScope.launch {
+            val usuario = withContext(Dispatchers.IO) {
+                correo?.let {
+                    usuarioDao.getUsuarioByCorreo(it)
+                }
+            }
+
+            usuario?.let {
+                binding.etNombre.setText(it.nombres)
+                binding.etApellido.setText(it.apellidos)
+                binding.etCorreo.setText(it.correo)
+                binding.etContra.setText(it.contra)
+
+            } ?: run {
+                binding.etNombre.setText("Usuario no encontrado")
+                binding.etApellido.setText("Apellido no encontrado")
+                binding.etCorreo.setText("Correo no encontrado")
+                binding.etContra.setText("Contraseña no encontrada")
+            }
+        }
 
         binding.btnEditar.setOnClickListener {
 

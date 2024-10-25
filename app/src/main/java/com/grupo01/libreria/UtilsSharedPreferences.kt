@@ -6,10 +6,11 @@ import android.content.Context.MODE_PRIVATE
 class UtilsSharedPreferences {
     companion object {
         //Inicio Session
-        fun createSesion(context: Context){
+        fun createSesion(context: Context, correoUsuario: String){
             val sharedPref = context.getSharedPreferences("com.midominio.miaplicacion", MODE_PRIVATE)
             val editor = sharedPref.edit()
             editor.putBoolean("login",true)
+            editor.putString("correoUsuario", correoUsuario)
             editor.apply()
         }
 
