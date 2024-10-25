@@ -1,6 +1,7 @@
 package com.grupo01.libreria
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.DatePicker
 import androidx.activity.enableEdgeToEdge
@@ -9,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.grupo01.libreria.databinding.ActivityEditarUsuarioBinding
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -39,6 +41,17 @@ class EditarUsuario : AppCompatActivity() {
         val sharedPref = getSharedPreferences("com.midominio.miaplicacion", MODE_PRIVATE)
         val correo = sharedPref.getString("correoUsuario", "No registrado")
 
+        fun delete(usuario: Usuario){
+            CoroutineScope(Dispatchers.IO).launch {
+                usuarioDao.delete(usuario)
+            }
+        }
+        suspend fun updateDate(): List<Usuario> {
+            return withContext(Dispatchers.IO) {
+                usuarioDao.getAllUser()
+            }
+        }
+
         lifecycleScope.launch {
             val usuario = withContext(Dispatchers.IO) {
                 correo?.let {
@@ -58,12 +71,20 @@ class EditarUsuario : AppCompatActivity() {
                 binding.etCorreo.setText("Correo no encontrado")
                 binding.etContra.setText("Contraseña no encontrada")
             }
+
+            binding.btnEliminar.setOnClickListener {
+                if (usuario != null) {
+                    delete(usuario)
+                }
+                UtilsSharedPreferences.clearSesion(this@EditarUsuario)
+                startActivity(Intent(this@EditarUsuario, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+            }
         }
+
+
 
         binding.btnEditar.setOnClickListener {
 
         }
-
-
     }
 }
