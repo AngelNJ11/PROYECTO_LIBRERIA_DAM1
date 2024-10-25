@@ -21,6 +21,12 @@ class LibroAdapter(val lstLibrodis: List<ModelLibrodis>): RecyclerView.Adapter<L
                     val context = itemView.context
                     val intent = Intent(context, DetalleLibro::class.java)
                     intent.putExtra("numero", item.numero)
+                    intent.putExtra("titulo",item.titulo)
+                    intent.putExtra("fechaSalida",item.fechaSalida)
+                    intent.putExtra("descripcion",item.descripcion)
+                    intent.putExtra("imgPort",item.portadaImg)
+                    intent.putExtra("paginas",item.paginas)
+
                     context.startActivity(intent)
                 }
             }
@@ -30,7 +36,7 @@ class LibroAdapter(val lstLibrodis: List<ModelLibrodis>): RecyclerView.Adapter<L
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LibroAdapterViewHolder {
         val binding = ItemLibrosdisBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return LibroAdapterViewHolder(binding, lstLibrodis) // Pasamos la lista aquí
+        return LibroAdapterViewHolder(binding, lstLibrodis)
     }
 
     override fun getItemCount(): Int {

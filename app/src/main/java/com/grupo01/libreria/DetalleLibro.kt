@@ -1,5 +1,6 @@
 package com.grupo01.libreria
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -29,33 +30,34 @@ class  DetalleLibro : AppCompatActivity() {
             insets
         }
 
-        val numero = intent.getIntExtra("numero", 0)
+        val numPag = intent.getIntExtra("paginas",0)
+        val descripcion = intent.getStringExtra("descripcion") ?: "No hay data"
+        val titulo = intent.getStringExtra("titulo")?: "No hay data"
+        val fechaSalida = intent.getStringExtra("fechaSalida")?: "No hay data"
+        val imgPort = intent.getStringExtra("imgPort")?: "no hay data"
 
-        CoroutineScope(Dispatchers.IO).launch {
-            val lstLibrosd = service.getLibrosDis()
 
-            if (numero > 0 && numero <= lstLibrosd.size) {
-                val Libro = lstLibrosd[numero - 1]
+        binding.txtNumPag.text = numPag.toString()
+        binding.txtDescripcion.text = descripcion
+        binding.txtTitulo.text = titulo
+        binding.txtFechaSalida.text = fechaSalida
 
-                withContext(Dispatchers.Main) {
-                    binding.txtTitulo.text = Libro.titulo
-                    binding.txtDescripcion.text = Libro.descripcion
-                    binding.txtNumPag.text = Libro.paginas.toString()
-                    binding.txtFechaSalida.text = Libro.fechaSalida
 
-                    if (!Libro.portadaImg.isNullOrEmpty()) {
-                        Picasso.get()
-                            .load(Libro.portadaImg)
-                            .into(binding.imgPort)
-                    } else {
-                        binding.imgPort.setImageResource(R.mipmap.ic_launcher_round)
-                    }
-                }
+        CoroutineScope(Dispatchers.Main).launch {
+            if (!imgPort.isNullOrEmpty() && imgPort != "no hay data") {
+                Picasso.get()
+                    .load(imgPort)
+                    .into(binding.imgPort)
             } else {
-                Log.e("DetalleLibro", "Índice fuera de rango: $numero")
+                binding.imgPort.setImageResource(R.mipmap.ic_launcher_round)
             }
         }
 
+
+        binding.btnBack.setOnClickListener {
+            val intent = Intent(this, ListLibros::class.java)
+            startActivity(intent)
+        }
 
 
     }
