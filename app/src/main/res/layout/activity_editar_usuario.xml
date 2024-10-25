@@ -144,6 +144,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="#000000"
                 android:text="Guardar"
                 android:textColorLink="#70BD6F"
                 android:textSize="16sp" />
@@ -158,7 +159,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="#D53939"
+                android:backgroundTint="#CE4040"
                 android:text="Eliminar" />
 
         </LinearLayout>
