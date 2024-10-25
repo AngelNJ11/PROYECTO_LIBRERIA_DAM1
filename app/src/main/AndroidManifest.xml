@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Libreria"
         tools:targetApi="31">
         <activity
+            android:name=".DetalleLibro"
+            android:exported="false" />
+        <activity
             android:name=".EditarUsuario"
             android:exported="false" />
         <activity
