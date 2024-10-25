@@ -20,7 +20,6 @@ import java.util.Locale
 
 class EditarUsuario : AppCompatActivity() {
     private lateinit var binding: ActivityEditarUsuarioBinding
-    private val calendario: Calendar = Calendar.getInstance()
     private lateinit var usuarioDao: UsuarioDAO
     private lateinit var database: UsuarioDB
 
@@ -46,9 +45,12 @@ class EditarUsuario : AppCompatActivity() {
                 usuarioDao.delete(usuario)
             }
         }
-        suspend fun updateDate(): List<Usuario> {
-            return withContext(Dispatchers.IO) {
-                usuarioDao.getAllUser()
+
+        fun updateUsuario(user: Usuario?){
+            CoroutineScope(Dispatchers.IO).launch {
+                user?.let{
+                    usuarioDao.update(it)
+                }
             }
         }
 
@@ -60,7 +62,7 @@ class EditarUsuario : AppCompatActivity() {
             }
 
             usuario?.let {
-                binding.etNombre.setText(it.nombres)
+                binding.etNombre.setText(it.nombres).toString()
                 binding.etApellido.setText(it.apellidos)
                 binding.etCorreo.setText(it.correo)
                 binding.etContra.setText(it.contra)
@@ -79,12 +81,17 @@ class EditarUsuario : AppCompatActivity() {
                 UtilsSharedPreferences.clearSesion(this@EditarUsuario)
                 startActivity(Intent(this@EditarUsuario, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
             }
-        }
 
-
-
-        binding.btnEditar.setOnClickListener {
-
+            binding.btnEditar.setOnClickListener {
+                if (usuario != null) {
+                    usuario.nombres = binding.etNombre.text.toString()
+                    usuario.apellidos = binding.etApellido.text.toString()
+                    usuario.correo = binding.etCorreo.text.toString()
+                    usuario.contra = binding.etContra.text.toString()
+                    updateUsuario(usuario)
+                    startActivity(Intent(this@EditarUsuario, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+                }
+            }
         }
     }
 }

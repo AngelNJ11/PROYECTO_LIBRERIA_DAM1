@@ -26,10 +26,10 @@
 
         <Button
             android:id="@+id/btnL"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesión"
             android:padding="12dp"
+            android:text="Empezar"
             android:textSize="18sp" />
 
     </LinearLayout>
