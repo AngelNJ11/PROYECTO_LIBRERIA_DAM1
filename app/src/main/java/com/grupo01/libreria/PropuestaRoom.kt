@@ -19,7 +19,7 @@ class PropuestaRoom : AppCompatActivity() {
 
     private lateinit var database: UsuarioDB
 
-    private lateinit var propuestaDao : PropuestaDAO
+    private lateinit var propuestaDao : PropuestaDao
 
     private  var propuestaData: Propuesta? = null
 
@@ -54,6 +54,9 @@ class PropuestaRoom : AppCompatActivity() {
         }
         binding.rvPropuestas.layoutManager = LinearLayoutManager(this)
 
+        //DEBO PONER MI LISTA DE ADAPTER A LA PROXIMA
+        binding.rvPropuestas.adapter = adapter
+
         val opciones = resources.getStringArray(R.array.opciones)
         spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -62,7 +65,7 @@ class PropuestaRoom : AppCompatActivity() {
 
         binding.btnAgregar.setOnClickListener {
 
-            if(propuestaData != null){
+            if (propuestaData != null) {
                 propuestaData.let {
 
                     it?.titulo = binding.edTitulo.text.toString()
@@ -70,18 +73,19 @@ class PropuestaRoom : AppCompatActivity() {
                     it?.genero = binding.sp.selectedItem.toString()
                 }
                 updatePropuesta(propuestaData)
-            }else{
-                val propuesta = Propuesta(titulo = binding.edTitulo.text.toString(), autor = binding.edAutor.text.toString(), genero = binding.sp.selectedItem.toString())
+            } else {
+                val propuesta = Propuesta(
+                    titulo = binding.edTitulo.text.toString(),
+                    autor = binding.edAutor.text.toString(),
+                    genero = binding.sp.selectedItem.toString()
+                )
                 crearPropuesta(propuesta)
-
                 binding.edTitulo.text.clear()
                 binding.edAutor.text.clear()
 
             }
         }
         updateDate()
-
-        
     }
     fun crearPropuesta(propuesta :Propuesta){
         CoroutineScope(Dispatchers.IO).launch {
@@ -102,9 +106,9 @@ class PropuestaRoom : AppCompatActivity() {
 
     fun updateDate(){
         CoroutineScope(Dispatchers.IO).launch {
-            val propuesta = propuestaDao.getAllPropuesta()
+            val propuestas = propuestaDao.getAllPropuesta()
             withContext(Dispatchers.Main){
-                adapter.updatePropuesta(propuesta)
+                adapter.updatePropuesta(propuestas)
             }
         }
     }

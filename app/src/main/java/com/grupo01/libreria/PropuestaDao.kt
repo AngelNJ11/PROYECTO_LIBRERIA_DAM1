@@ -8,22 +8,19 @@ import androidx.room.Query
 import androidx.room.Update
 import com.grupo01.libreria.model.Propuesta
 
-
-
 @Dao
-interface PropuestaDAO {
+interface PropuestaDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun  insert(propuesta: Propuesta)
+    suspend fun insert(propuesta : Propuesta)
 
     @Update
-    suspend fun update(propuesta: Propuesta)
+    suspend fun update(propuesta : Propuesta)
 
     @Delete
-    suspend fun delete(propuesta : Propuesta)
+    suspend fun delete(propuesta: Propuesta)
 
     @Query("SELECT * FROM propuesta_table")
-    suspend fun getAllPropuesta(): List<Propuesta>
-
+    suspend fun getAllPropuesta() : List<Propuesta>
 
 }

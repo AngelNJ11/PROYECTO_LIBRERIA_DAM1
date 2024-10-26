@@ -1,79 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="12dp"
-    tools:visibility="visible">
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        tools:visibility="visible">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:cardBackgroundColor="#D5CDCD"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp">
+            android:text="TextView" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#ffffff"
-                android:orientation="vertical"
-                android:padding="12dp"
-                tools:visibility="visible">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
 
-                <TextView
-                    android:id="@+id/txtTitulo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-                <View
-                    android:layout_width="60dp"
-                    android:layout_height="8dp" />
-
-                <TextView
-                    android:id="@+id/txtAutor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="60dp"
-                    android:layout_height="11dp" />
-
-                <TextView
-                    android:id="@+id/txtGenero"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/btnEditarPropuesta"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/txtAutor"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Editar" />
+            android:text="TextView" />
 
-        <Button
-            android:id="@+id/btnEliminarPropuesta"
-            android:layout_width="0dp"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
+        <TextView
+            android:id="@+id/txtGenero"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Eliminar" />
+            android:text="TextView" />
+
+        <Space
+            android:layout_width="46dp"
+            android:layout_height="16dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnPropuestaEditar"
+        android:layout_width="101dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:backgroundTint="#03A9F4"
+        android:text="Editar" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/btnPropuestaEliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:backgroundTint="#CE4040"
+        android:text="Eliminar" />
+
 </LinearLayout>

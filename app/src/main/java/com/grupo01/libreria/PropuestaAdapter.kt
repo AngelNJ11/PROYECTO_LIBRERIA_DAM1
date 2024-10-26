@@ -8,10 +8,7 @@ import com.grupo01.libreria.model.Propuesta
 
 class PropuestaAdapter(var lstPropuesta: List<Propuesta>, private val actionUpdate: (propuesta: Propuesta) -> Unit, private val actionDelete: (propuesta: Propuesta) -> Unit): RecyclerView.Adapter<PropuestaAdapter.PropuestaAdapterViewHolder>() {
 
-    class PropuestaAdapterViewHolder(val binding: ItemPropuestaBinding) : RecyclerView.ViewHolder(binding.root){
-
-    }
-
+    class PropuestaAdapterViewHolder(val binding: ItemPropuestaBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PropuestaAdapterViewHolder {
         val binding =
@@ -33,10 +30,10 @@ class PropuestaAdapter(var lstPropuesta: List<Propuesta>, private val actionUpda
 
         holder.binding.txtGenero.text = propuesta.genero
 
-        holder.binding.btnEliminarPropuesta.setOnClickListener {
+        holder.binding.btnPropuestaEliminar.setOnClickListener {
             actionDelete(propuesta)
         }
-        holder.binding.btnEditarPropuesta.setOnClickListener {
+        holder.binding.btnPropuestaEditar.setOnClickListener {
             actionUpdate(propuesta)
         }
     }
