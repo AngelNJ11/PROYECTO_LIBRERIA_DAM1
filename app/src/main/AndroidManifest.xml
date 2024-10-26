@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Libreria"
         tools:targetApi="31">
         <activity
-            android:name=".ListPropuesta"
+            android:name=".PropuestaRoom"
             android:exported="false" />
         <activity
             android:name=".EditarPropuestas"

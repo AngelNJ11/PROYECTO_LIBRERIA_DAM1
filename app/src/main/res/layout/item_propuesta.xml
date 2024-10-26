@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp">
+    android:padding="12dp"
+    tools:visibility="visible">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="8dp"
+        tools:visibility="visible">
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
@@ -26,36 +28,52 @@
                 android:layout_height="wrap_content"
                 android:background="#ffffff"
                 android:orientation="vertical"
-                android:padding="12dp">
+                android:padding="12dp"
+                tools:visibility="visible">
 
                 <TextView
                     android:id="@+id/txtTitulo"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
                 <View
-                    android:layout_width="match_parent"
+                    android:layout_width="60dp"
                     android:layout_height="8dp" />
 
                 <TextView
                     android:id="@+id/txtAutor"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
                 <View
                     android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp" />
+                    android:layout_width="60dp"
+                    android:layout_height="11dp" />
 
                 <TextView
                     android:id="@+id/txtGenero"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnEditarPropuesta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Editar" />
+
+        <Button
+            android:id="@+id/btnEliminarPropuesta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Eliminar" />
+
     </LinearLayout>
 </LinearLayout>

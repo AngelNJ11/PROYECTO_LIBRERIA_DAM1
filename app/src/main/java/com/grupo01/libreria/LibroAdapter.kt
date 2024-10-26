@@ -59,10 +59,7 @@ class LibroAdapter(val lstLibrodis: List<ModelLibrodis>): RecyclerView.Adapter<L
         } else {
             holder.binding.imgPort.setImageResource(R.mipmap.ic_launcher_round)
         }
-
     }
-
-
 
 
 

@@ -30,7 +30,7 @@ class MenuActivity : AppCompatActivity() {
         }
 
         binding.btnSolicitarLibro.setOnClickListener {
-            startActivity(Intent(this, RegistrarPropuestas::class.java))
+            startActivity(Intent(this, PropuestaRoom::class.java))
         }
 
         binding.btnCerrarSesion.setOnClickListener {
