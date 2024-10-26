@@ -2,6 +2,7 @@ package com.grupo01.libreria
 
 import android.util.Log
 import com.grupo01.libreria.model.ModelLibrodis
+import com.grupo01.libreria.model.Propuesta
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 
@@ -15,5 +16,7 @@ class RepositoryImpl: Repository {
             return listOf()
         }
     }
+
+
 
 }

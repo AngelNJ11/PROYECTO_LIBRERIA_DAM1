@@ -20,12 +20,17 @@ class MenuActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         binding.btnEditarUsuario.setOnClickListener {
             startActivity(Intent(this, EditarUsuario::class.java))
         }
 
         binding.btnCatalogo.setOnClickListener {
             startActivity(Intent(this, ListLibros::class.java))
+        }
+
+        binding.btnSolicitarLibro.setOnClickListener {
+            startActivity(Intent(this, RegistrarPropuestas::class.java))
         }
 
         binding.btnCerrarSesion.setOnClickListener {
