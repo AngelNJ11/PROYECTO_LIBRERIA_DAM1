@@ -1,22 +1,18 @@
 package com.grupo01.libreria
 
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.DatePicker
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.grupo01.libreria.databinding.ActivityEditarUsuarioBinding
+import com.grupo01.libreria.model.Usuario
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
 
 class EditarUsuario : AppCompatActivity() {
     private lateinit var binding: ActivityEditarUsuarioBinding
@@ -62,7 +58,7 @@ class EditarUsuario : AppCompatActivity() {
             }
 
             usuario?.let {
-                binding.etNombre.setText(it.nombres).toString()
+                binding.etNombre.setText(it.nombres)
                 binding.etApellido.setText(it.apellidos)
                 binding.etCorreo.setText(it.correo)
                 binding.etContra.setText(it.contra)

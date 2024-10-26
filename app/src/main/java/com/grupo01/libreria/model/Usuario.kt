@@ -1,7 +1,6 @@
 package com.grupo01.libreria.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.Date
 
 @Entity(tableName = "usuario_table")
 

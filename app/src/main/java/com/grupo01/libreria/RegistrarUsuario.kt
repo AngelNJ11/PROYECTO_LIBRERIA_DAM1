@@ -12,6 +12,7 @@ import com.grupo01.libreria.databinding.ActivityRegistrarUsuarioBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 import android.app.DatePickerDialog
+import com.grupo01.libreria.model.Usuario
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -51,11 +52,6 @@ class RegistrarUsuario : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        binding.btnRegresar.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.btnRegistrar.setOnClickListener{
             val nombre = binding.etNombre.text.toString()
             val apellido = binding.etApellido.text.toString()
@@ -73,6 +69,7 @@ class RegistrarUsuario : AppCompatActivity() {
             binding.etPais.text.clear()
             binding.etCorreo.text.clear()
             binding.etContra.text.clear()
+            startActivity(Intent(this, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
         }
     }
 

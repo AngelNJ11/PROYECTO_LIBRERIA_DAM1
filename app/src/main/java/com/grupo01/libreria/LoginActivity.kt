@@ -2,7 +2,6 @@ package com.grupo01.libreria
 
 import android.os.Bundle
 import android.content.Intent
-import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(
                 Intent(
                     this,
-                    ListLibros::class.java
+                    MenuActivity::class.java
                 ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             )
         } else {
@@ -48,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(
                             Intent(
                                 this@LoginActivity,
-                                EditarUsuario::class.java
+                                MenuActivity::class.java
                             ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         )
                         mostrarToast("Ingresaste correctamente", true)

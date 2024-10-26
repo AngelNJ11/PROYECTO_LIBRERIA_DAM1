@@ -15,19 +15,7 @@
         android:layout_marginTop="1dp"
     tools:context=".DetalleLibro">
 
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="&lt; Volver"
-        android:textSize="24sp"
-        android:textColor="#1193d5"
-        android:background="@android:color/transparent"
-        android:layout_gravity="start"
-        android:layout_marginBottom="16dp"
-        android:padding="8dp" />
-
-    <ImageView
+        <ImageView
         android:id="@+id/imgPort"
         android:layout_width="match_parent"
         android:layout_height="350dp"
@@ -35,16 +23,16 @@
         android:scaleType="fitCenter"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/txtTitulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Título del Libro"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="8dp"
-        android:padding="8dp" />
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:padding="8dp"
+            android:text="Título del Libro"
+            android:textColor="#232222"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,21 +43,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:text="Descripción: "
-            android:textStyle="bold"
-            android:textColor="#FFB74D"
+            android:textColor="#C17D1B"
             android:textSize="16sp"
-            android:padding="8dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtDescripcion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Texto de descripción"
-            android:textSize="16sp"
-            android:textColor="#FFFFFF"
             android:justificationMode="inter_word"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:text="Texto de descripción"
+            android:textColor="#1F1F1F"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -81,20 +69,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:text="Número de páginas: "
-            android:textStyle="bold"
-            android:textColor="#FFB74D"
+            android:textColor="#C17D1B"
             android:textSize="16sp"
-            android:padding="8dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtNumPag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:text="100"
-            android:textSize="16sp"
-            android:textColor="#FFFFFF"
-            android:padding="8dp" />
+            android:textColor="#1F1F1F"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -105,20 +93,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:text="Fecha de salida: "
-            android:textStyle="bold"
-            android:textColor="#FFB74D"
+            android:textColor="#C17D1B"
             android:textSize="16sp"
-            android:padding="8dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtFechaSalida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:text="01/01/2023"
-            android:textSize="16sp"
-            android:textColor="#FFFFFF"
-            android:padding="8dp" />
+            android:textColor="#1F1F1F"
+            android:textSize="16sp" />
     </LinearLayout>
 </LinearLayout>
     </ScrollView>

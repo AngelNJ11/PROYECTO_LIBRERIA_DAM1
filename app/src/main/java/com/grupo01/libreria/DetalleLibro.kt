@@ -44,7 +44,7 @@ class  DetalleLibro : AppCompatActivity() {
 
 
         CoroutineScope(Dispatchers.Main).launch {
-            if (!imgPort.isNullOrEmpty() && imgPort != "no hay data") {
+            if (imgPort.isNotEmpty() && imgPort != "no hay data") {
                 Picasso.get()
                     .load(imgPort)
                     .into(binding.imgPort)
@@ -52,13 +52,5 @@ class  DetalleLibro : AppCompatActivity() {
                 binding.imgPort.setImageResource(R.mipmap.ic_launcher_round)
             }
         }
-
-
-        binding.btnBack.setOnClickListener {
-            val intent = Intent(this, ListLibros::class.java)
-            startActivity(intent)
-        }
-
-
     }
 }

@@ -1,6 +1,5 @@
 package com.grupo01.libreria
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -42,13 +41,6 @@ class ListLibros : AppCompatActivity() {
                 binding.rvLibrosdis.adapter = LibroAdapter(lstLibrosd)
             }
         }
-
-        binding.btnLogOut.setOnClickListener {
-            UtilsSharedPreferences.clearSesion(this)
-            startActivity(Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
-        }
-
-
     }
 
 }
